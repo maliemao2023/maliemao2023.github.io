@@ -1,3 +1,33 @@
 <p>这里是马列毛主义宣传、讨论的网站</p>
 <p>本站建于 2023年12月24日</p>
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>留言板</title>
+  </head>
+  <body>
+    <h1>留言板</h1>
+    <form>
+      <label>姓名:</label>
+      <input type="text" id="name" />
+      <br />
+      <label>留言:</label>
+      <textarea id="message"></textarea>
+      <br />
+      <button type="button" onclick="addMessage()">留言</button>
+    </form>
+    <div id="messages">
+    </div>
+    <script>
+      function addMessage() {
+        var name = document.getElementById("name").value;
+        var message = document.getElementById("message").value;
+        var messagesDiv = document.getElementById("messages");
+        var newMessage = document.createElement("p");
+        newMessage.innerHTML = name + ": " + message;
+        messagesDiv.appendChild(newMessage);
+      }
+    </script>
+  </body>
+</html>
