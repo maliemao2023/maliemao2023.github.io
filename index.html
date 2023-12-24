@@ -2,39 +2,94 @@
 <p>本站建于 2023年12月24日</p>
 
 <!DOCTYPE html>
-
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+            #box{
+                width:300px;
+                height:200px;
+                border:1px solid #000;
+            }
+            .text{
+                width:100%;
+                height:20px;
+                border:1px dashed #ccc;
+            }
+            .time{
+                width:60px;
+                height:20px;
+                float: right;
+                background:#ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <input type="button"  value="发布" id="block"/>
+        <input type="button" value="删除" id="delete"/>
+        <div id="box">
+            <!--<p class="text">雨天</p>
+            <p class="time">04.21</p>-->
+        </div>
+    </body>
+    <script type="text/javascript">
+        var oTxt=document.getElementsByTagName('textarea')[0];
+        var oBox=document.getElementById('box');
+        var oBK=document.getElementById('block');
+        var oDE=document.getElementById('delete');
+        var arr=[];
 
-<head>
+        var db=openDatabase('mydb','1.0','textlyb',1024*1024);
 
-  <title>留言板</title>
+        db.transaction(function (contex){
+            contex.executeSql('create table if not exists liuyanban(content)');
+        })
 
-  <link rel="stylesheet" type="text/css" href="style.css">
+        //页面加载完后显示所有数据
+        db.transaction(function (contex){
+            contex.executeSql('select * from liuyanban',[],function(con,data){
+                var len=data.rows.length,i;
+                for(var i=0;i<len;i++){
+                    arr.push(data.rows.item(i).content);
+                }
+                for(var i=0;i<len;i++){
+                    var aP=document.createElement('p');
+                    aP.innerHTML=data.rows.item(i).content;
+                    oBox.appendChild(aP);
+                }
+            })
+        })
 
-</head>
+        oBK.onclick=function(){
+            //判断当输入框不为空时，插入数据
+            if(oTxt.value){
+                db.transaction(function (contex){
+                    contex.executeSql('insert into liuyanban(content) values("'+oTxt.value+'")');
+                    //每次输入之后清空
+                    oTxt.value='';
+                })
 
-<body>
+                //逐条添加数据
+                db.transaction(function (contex){
+                    contex.executeSql('select * from liuyanban',[],function(con,data){
+                        var len=data.rows.length,i;
+                        arr.push(data.rows.item(len-1).content);
+                        var aP=document.createElement('p');
+                        aP.innerHTML=data.rows.item(len-1).content;
+                        oBox.appendChild(aP);
+                    })
+                })
+            }
+        }
 
-  <div class="container">
-
-    <h1>留言板</h1>
-
-    <form id="message-form">
-
-      <input type="text" id="name" placeholder="姓名" required>
-
-      <textarea id="message" placeholder="留言内容" required></textarea>
-
-      <button type="submit">提交</button>
-
-    </form>
-
-    <ul id="message-list"></ul>
-
-  </div>
-
-  <script src="script.js"></script>
-
-</body>
-
+        //删除数据
+        oDE.onclick=function(){
+            db.transaction(function (contex){
+                contex.executeSql('delete from liuyanban');
+                location.reload();
+            })
+        }
+    </script>
 </html>
