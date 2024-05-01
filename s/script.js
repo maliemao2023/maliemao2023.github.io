@@ -5,7 +5,7 @@ function addMessage() {
     document.getElementById('messages').innerHTML += messageDiv;
 
     // 请求 GitHub API，创建一个新 Issue 来保存留言
-    fetch('https://api.github.com/repos/:owner/:repo/issues', {
+    fetch('https://api.github.com/repos/maliemao2023/maliemao2023.github.io/issues', {
         method: 'POST',
         body: JSON.stringify({
             title: 'New Message',
