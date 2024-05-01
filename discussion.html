@@ -1,43 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>实时留言板</title>
+    <title>GitHub留言板</title>
 </head>
 <body>
-    <h1>实时留言板</h1>
-    <input type="text" id="messageInput" placeholder="请输入留言">
-    <button onclick="sendMessage()">发送留言</button>
-    <div id="messageBoard"></div>
+    <h1>GitHub留言板</h1>
+    <input type="text" id="issueTitle" placeholder="标题">
+    <textarea id="issueBody" placeholder="留言内容"></textarea>
+    <button onclick="createIssue()">提交留言</button>
+    <div id="issues"></div>
 
     <script>
-        const socket = new WebSocket('wss://echo.websocket.org');
+        // GitHub仓库信息
+        const owner = '你的GitHub用户名';
+        const repo = '你的仓库名';
 
-        socket.onopen = function(event) {
-            console.log('WebSocket连接已建立');
+        // 个人访问令牌（请不要公开分享你的Token）
+        const token = '你的GitHub个人访问令牌';
+
+        // 创建一个新的GitHub Issue作为留言
+        function createIssue() {
+            const title = document.getElementById('issueTitle').value;
+            const body = document.getElementById('issueBody').value;
+
+            fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `token ${token}`,
+                    'Accept': 'application/vnd.github.v3+json'
+                },
+                body: JSON.stringify({ title, body })
+            })
+            .then(response => response.json())
+            .then(json => {
+                alert('留言提交成功！');
+                loadIssues();
+            })
+            .catch(error => console.error('Error:', error));
         }
 
-        socket.onerror = function(error) {
-            console.error('WebSocket连接错误');
+        // 从GitHub加载所有Issues作为留言列表
+        function loadIssues() {
+            fetch(`https://api.github.com/repos/${owner}/${repo}/issues`)
+            .then(response => response.json())
+            .then(issues => {
+                let issuesList = '';
+                issues.forEach(issue => {
+                    issuesList += `<p><strong>${issue.title}</strong>: ${issue.body}</p>`;
+                });
+                document.getElementById('issues').innerHTML = issuesList;
+            })
+            .catch(error => console.error('Error:', error));
         }
 
-        socket.onmessage = function(event) {
-            let message = event.data;
-            displayMessage(message);
-        }
-
-        function sendMessage() {
-            let message = document.getElementById('messageInput').value;
-            socket.send(message);
-        }
-
-        function displayMessage(message) {
-            let time = new Date().toLocaleString();
-            let messageItem = time + ': ' + message + '<br>';
-            document.getElementById('messageBoard').innerHTML += messageItem;
-        }
+        // 页面加载时获取留言
+        window.onload = loadIssues;
     </script>
 </body>
 </html>
