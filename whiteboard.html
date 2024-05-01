@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>留言板</title>
+<title>共享留言板</title>
 </head>
 <body>
-<h1>留言板</h1>
+<h1>共享留言板</h1>
 <form id="messageForm">
   <label for="name">姓名：</label>
   <input type="text" id="name" required><br><br>
@@ -16,43 +16,49 @@
 </form>
 <div id="messages"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/firebase@8.3.3/dist/firebase-app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/firebase@8.3.3/dist/firebase-database.js"></script>
 <script>
-let messages = [];
+// Firebase 配置
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  databaseURL: "YOUR_DATABASE_URL",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+// 初始化 Firebase
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.database();
+const messagesRef = db.ref('messages');
 
 document.getElementById('messageForm').addEventListener('submit', function(e) {
   e.preventDefault();
   let name = document.getElementById('name').value;
   let message = document.getElementById('message').value;
-  let now = new Date();
-  let timestamp = now.toUTCString();
-  let data = { name: name, message: message, timestamp: timestamp };
-  messages.push(data);
-  displayMessages();
-  saveMessages();
+  let timestamp = new Date().getTime();
+  
+  messagesRef.push({
+    name: name,
+    message: message,
+    timestamp: timestamp
+  });
+
   document.getElementById('messageForm').reset();
 });
 
-function displayMessages() {
+messagesRef.on('value', function(snapshot) {
   document.getElementById('messages').innerHTML = '';
-  messages.forEach(function(data) {
-    let message = `<strong>${data.name}</strong> - ${data.timestamp}: ${data.message}<hr>`;
-    document.getElementById('messages').innerHTML += message;
+  snapshot.forEach(function(childSnapshot) {
+    let message = childSnapshot.val();
+    let messageDisplay = `<strong>${message.name}</strong> - ${new Date(message.timestamp).toLocaleString()}: ${message.message}<hr>`;
+    document.getElementById('messages').innerHTML += messageDisplay;
   });
-}
-
-function saveMessages() {
-  localStorage.setItem('messages', JSON.stringify(messages));
-}
-
-function loadMessages() {
-  let storedMessages = localStorage.getItem('messages');
-  if (storedMessages) {
-    messages = JSON.parse(storedMessages);
-    displayMessages();
-  }
-}
-
-loadMessages();
+});
 </script>
 </body>
 </html>
