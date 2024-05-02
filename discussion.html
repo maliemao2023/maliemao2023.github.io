@@ -5,21 +5,16 @@
     <title>GitHub留言板</title>
 </head>
 <body>
-    <h1>GitHub留言板fff</h1>
+    <h1>GitHub留言板a</h1>
     <input type="text" id="issueTitle" placeholder="标题">
     <textarea id="issueBody" placeholder="留言内容"></textarea>
     <button onclick="createIssue()">提交留言</button>
     <div id="issues"></div>
 
     <script>
-        // GitHub仓库信息
         const owner = 'maliemao2023';
         const repo = 'maliemao2023.github.io';
-
-        // 个人访问令牌（请不要公开分享你的Token）
         const token = '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';
-
-        // 创建一个新的GitHub Issue作为留言
         function createIssue() {
             const title = document.getElementById('issueTitle').value;
             const body = document.getElementById('issueBody').value;
@@ -39,8 +34,6 @@
             })
             .catch(error => console.error('Error:', error));
         }
-
-        // 从GitHub加载所有Issues作为留言列表
         function loadIssues() {
             fetch(`https://api.github.com/repos/maliemao2023/maliemao2023.github.io/issues`)
             .then(response => response.json())
@@ -53,8 +46,6 @@
             })
             .catch(error => console.error('Error:', error));
         }
-
-        // 页面加载时获取留言
         window.onload = loadIssues;
     </script>
 </body>
