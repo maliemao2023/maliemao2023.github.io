@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Valine - A simple comment system based on Leancloud.</title>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-    <script src="./dist/Valine.min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 </head>
 <body>
-    <div class="comment"></div>
+    <div id="vcomments"></div>
     <script>
-      new Valine({
-          el: '#disqus_thread',
-          smiles_url: '/smiles',
-          app_id: 'Qnn8oqEnbf54e3B3ZjsHHOMM-MdYXbMMI',
-          app_key: 'kW9wU3nGd7FF6kRVDOwlwPx0',
-          placeholder: '老司机来一发吧 O(∩_∩)O~~'
-      });
+        new Valine({
+            el: '#vcomments',
+            appId: 'Qnn8oqEnbf54e3B3ZjsHHOMM-MdYXbMMI',
+            appKey: 'kW9wU3nGd7FF6kRVDOwlwPx0'
+        })
     </script>
 </body>
 </html>
