@@ -1,0 +1,292 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+	<title>在线加密解密</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+	<meta http-equiv="Content-Language" content="zh-CN" />
+	<meta name="keywords" content="OSCHINA.NET 在线工具,ostools,jsbin,加密/解密，Markdown,less,java api,php api,node.js api,QR Code"/>
+	<meta name="description" content="OSCHINA.NET在线工具,ostools为开发设计人员提供在线工具，提供jsbin在线 CSS、JS 调试，在线 Java API文档,在线 PHP API文档,在线 Node.js API文档,Less CSS编译器，MarkDown编译器等其他在线工具" />
+	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="/css/basic.css?20230615" type="text/css"/>
+	<link rel="stylesheet" href="/css/osc-web-new.css" type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="/css/semantic-ui/semantic.css"/>
+	<script type="text/javascript" src="/js/jquery/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="/js/jquery/jquery.cookies.2.2.0.min.js"></script>
+	<script type="text/javascript" src="/css/semantic-ui/semantic.js"></script>
+	<script type="text/javascript" src="/js/layout.js"></script>
+	<link rel="stylesheet" href='/js/bootstrap/css/bootstrap.min.css'/>
+	<script type="text/javascript" src='/js/bootstrap/js/bootstrap.min.js'></script>
+
+	
+</head>
+<body>
+	
+<div class="osc-new-layout">
+	<div class="header-box header-box--compact header-box--fixed">
+		<div class="header-box__wrapper">
+			<div class="header-box__inner">
+				<div class="header-box__inner__box">
+					<a class="logo" href="/" title="OSCHINA.NET在线工具">
+						<svg width="155" height="44" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g><circle fill="#21B351" cx="22" cy="22" r="22"></circle><path d="M21.63 27.27c-2.926.02-5.312-1.89-5.472-5.454-.16-3.325 2.766-5.555 5.552-5.614 3.207-.08 5.132 3.583 5.132 3.583l8.278-3.046S31.712 7.92 22.492 7.92c-8.619 0-14.572 5.972-14.572 14.075 0 7.207 5.612 14.393 14.372 14.075 9.62-.359 12.908-8.82 12.908-8.82l-8.499-2.806c.02-.04-1.723 2.826-5.07 2.826" fill="#FFF"></path></g><path d="M62.957 27.5c3.1 0 4.588-2.583 4.588-5.5 0-2.893-1.537-5.5-4.588-5.5s-4.59 2.607-4.59 5.5c0 2.917 1.49 5.5 4.59 5.5zm0 3.3c-4.955 0-8.397-3.85-8.397-8.8 0-4.974 3.417-8.8 8.397-8.8 4.906 0 8.396 3.946 8.396 8.8 0 4.95-3.393 8.8-8.396 8.8zm15.402-17.6c1.366 0 4.784.502 4.784 2.391 0 .933-.635 1.77-1.636 1.77-1 0-1.782-.718-3.246-.718-1.05 0-2.002.55-2.002 1.555 0 2.463 8.153.885 8.153 7.054 0 3.42-2.88 5.548-6.249 5.548-1.88 0-5.931-.43-5.931-2.678 0-.933.635-1.698 1.635-1.698 1.148 0 2.514.933 4.101.933 1.611 0 2.49-.885 2.49-2.057 0-2.822-8.153-1.124-8.153-6.672 0-3.348 2.807-5.428 6.054-5.428zM85.29 22c0-4.974 3.417-8.8 8.396-8.8 1.782 0 5.248.574 5.248 2.678 0 .861-.61 1.602-1.513 1.602-1.001 0-1.684-.837-3.735-.837-3.026 0-4.589 2.511-4.589 5.429 0 2.845 1.587 5.285 4.59 5.285 2.05 0 2.88-1.005 3.88-1.005 1.099 0 1.611 1.076 1.611 1.626 0 2.296-3.686 2.822-5.492 2.822-4.955 0-8.396-3.85-8.396-8.8zm15.597 6.791V15.21c0-1.196.78-1.866 1.83-1.866s1.831.67 1.831 1.866v5.07h7.664v-5.07c0-1.196.782-1.866 1.831-1.866 1.05 0 1.83.67 1.83 1.866V28.79c0 1.196-.78 1.866-1.83 1.866s-1.83-.67-1.83-1.866v-5.213h-7.665v5.213c0 1.196-.78 1.866-1.83 1.866s-1.831-.67-1.831-1.866zm17.184 0V15.21c0-1.196.78-1.866 1.83-1.866s1.83.67 1.83 1.866V28.79c0 1.196-.78 1.866-1.83 1.866s-1.83-.67-1.83-1.866zm5.711 0V15.21c0-1.196.781-1.866 1.83-1.866.465 0 1.221.36 1.539.79l7.737 10.115h.049v-9.04c0-1.195.781-1.865 1.83-1.865 1.05 0 1.831.67 1.831 1.866V28.79c0 1.196-.78 1.866-1.83 1.866-.464 0-1.196-.36-1.538-.79l-7.738-9.995h-.048v8.92c0 1.195-.782 1.865-1.831 1.865-1.05 0-1.83-.67-1.83-1.866zm15.988-.598l4.906-13.008c.415-1.1 1.367-1.985 2.612-1.985 1.294 0 2.197.837 2.612 1.985l4.784 13.008c.146.383.195.718.195.885 0 .933-.781 1.579-1.684 1.579-1.025 0-1.538-.527-1.782-1.244l-.732-2.248h-6.786l-.732 2.224c-.244.741-.757 1.268-1.758 1.268-.976 0-1.806-.718-1.806-1.674 0-.383.122-.67.171-.79zm7.493-11.263l-2.318 6.935h4.637l-2.27-6.935h-.049z" fill="#111" fill-rule="nonzero"></path></g></svg>
+					</a>
+					<div class="nav-bar" role="navigation">
+											</div>
+				</div>
+				<div class="header-box__inner__box">
+					<div class="search-circle-box">
+						<form action="https://www.oschina.net/search" role="search">
+							<div class="search-circle-box__inner" style="width: 160px;margin-left: -10px;">
+								<input type="hidden" name="scope" value="all">
+								<input class="search-circle-box__input" aria-label="搜索" placeholder="大家都在搜..." name="q" value="" type="text" required />
+								<button type="submit" class="search-circle-box__button"><i class="search icon"></i></button>
+							</div>
+						</form>
+					</div>
+					<div class="user-bar" style="margin-left: unset;">
+						<ul class="user-bar__links">
+														<a class="item icon app-download btnDownloadTop" title="OSC小程序"><i class="icon mobile alternate"></i></a>
+							<div class="ui popup top left transition btnDownloadTopContent hidden" style="width: 200px">
+								<h3 class="header">OSCHINA 小程序 —— <br/>关注技术领域的头条文章</h3>
+								<p>聚合全网技术文章，根据你的阅读喜好进行个性推荐</p>
+								<img width="200" src='https://oscimg.oschina.net/oscnet/up-91f008637a179c217fdec464b7bad202844.jpg' alt="OSC小程序"/>
+							</div>
+						</ul>
+					</div>
+					<div style="width: 120px"></div>
+				</div>
+			</div
+		</div>
+	</div>
+</div>
+
+
+<script>
+	$(document).on('click', '#moreMenu', function () {
+		let display = document.getElementById("moreMenuDropDown").style.display
+		console.log('moreMenu',display);
+		if (display==='block'){
+			document.getElementById("moreMenuDropDown").style.display = "none";
+			document.getElementById("moreMenu").style.color = "rgba(255,255,255,.7)";
+			document.getElementById("moreMenu").style.fontWeight = "400";
+		}else {
+			document.getElementById("moreMenuDropDown").style.display = "block";
+			document.getElementById("moreMenu").style.color = "#fff";
+			document.getElementById("moreMenu").style.fontWeight = "700";
+		}
+	});
+	$(document).on('click', '#searchIcon', function () {
+		var searchForm = $(this).parents('.search-item:eq(0)');
+		var q = searchForm.find('input[name=q]').val().trim();
+		// 无关键词时不响应
+		if (q.length > 0) {
+			searchForm.submit();
+		}
+	});
+</script><script type="text/javascript" src="/js/ad/tag_osc.js?date=20230615"></script>
+<div class="wrapper ad-wrap" style="margin-top: 15px">
+			
+	
+</div>
+	<script type="text/javascript" src="/js/CryptoJS/components/core-min.js"></script>
+	<script type="text/javascript" src="/js/CryptoJS/rollups/aes.js"></script>
+	<script type="text/javascript" src="/js/CryptoJS/rollups/tripledes.js"></script>
+	<script type="text/javascript" src="/js/CryptoJS/rollups/rabbit.js"></script>
+	<script type="text/javascript" src="/js/CryptoJS/rollups/rc4.js"></script>
+<div id="mainContent" class="wrapper">
+<div class="toolName">在线加密解密(采用<a id="crypto" href="http://www.oschina.net/p/crypto-js">Crypto-JS</a>实现)<a data-toggle="modal" href="#advice" style="float:right;text-decoration:none;"><span class="badge badge-important"><i class="icon-envelope icon-white"></i> Feedback</span></a></div>
+	<div class="toolUsing clearfix">
+	<div class="toolsTab  clearfix">
+	    <ul class="nav nav-tabs">
+	    	<li class='active'><a onclick="javascript:location.href='/encrypt'">加密/解密</a></li>
+	    	<li><a onclick="javascript:location.href='/encrypt?type=2'">散列/哈希</a></li>
+			<li><a onclick="javascript:location.href='/encrypt?type=3'">BASE64</a></li>
+			<li><a onclick="javascript:location.href='/encrypt?type=4'">图片/BASE64转换</a></li>
+	    </ul>
+	    <div class='clear'></div>
+	</div>
+    <style>
+		.leftBar .title,.rightBar .title{margin-bottom:10px;}
+		.OptDetail{text-align:left;margin-left:10px;}
+		.OptDetail li{width:120px;margin:5px 0px 10px 0px;}
+		.Button input{margin:5px 0px 10px 0px;}
+		#pwd{width:110px;}
+	</style>
+	<div class="leftBar">
+		<div class="title">明文:</div>
+    	<textarea name='message' id='msg_source' value="this is a example" 
+    		onfocus="if(this.value=='this is a example'){this.value='';};this.select();" 
+    		onblur="(this.value=='')?this.value='this is a example':this.value;" 
+    		 class="text_source">this is a example</textarea>
+    </div>
+
+	<div class="operateLR">
+		<div class="OptDetail">
+    		<label>加密算法:</label>
+			<ul>
+                <li><label for="aes" class="radio"><input type="radio" name="encrypt_type" value="aes" checked="checked" id="aes"/>AES</label></li>
+            	<li><label for="des" class="radio"><input type="radio" name="encrypt_type" value="des" id="des"/>DES</label></li>
+            	<li><label for="rc4" class="radio"><input type="radio" name="encrypt_type" value="rc4" id="rc4"/>RC4</label></li>
+    			<li><label for="rabbit" class="radio"><input type="radio" name="encrypt_type" value="rabbit" id="rabbit"/>Rabbit</label></li>
+    			<li><label for="tripledes" class="radio"><input type="radio" name="encrypt_type" value="tripledes" id="tripledes"/>TripleDes</label></li>
+            </ul>
+        </div>
+		<div class="OptDetail Button">
+			
+    		<label class="input">密码:
+    		<input type="text" id="pwd"/>
+			</label>
+			<ul>
+            <li><button  class="btn btn-primary" onclick="javascript:encrypt();">加密 <i class="icon-chevron-right icon-white"></i></button></li>
+            <li><button  class="btn btn-primary" onclick="javascript:decrypt();"><i class="icon-chevron-left icon-white"></i> 解密 </button></li>
+			</ul>
+        </div>
+	</div>
+	
+	<div class="rightBar">
+		<div class="title">密文:</div>
+		<textarea name='cipher' id='encrypt_result' onclick="this.focus();this.select();"></textarea>
+	</div>
+
+	<script type='text/javascript'>
+	    function encrypt(){
+		    switch($('input[name="encrypt_type"]:checked').val()){
+		    	case "aes":
+			    	$("#encrypt_result").val(CryptoJS.AES.encrypt($("#msg_source").val(),$("#pwd").val()));
+			    	break;
+		    	case "des":
+		    		$("#encrypt_result").val(CryptoJS.DES.encrypt($("#msg_source").val(),$("#pwd").val()));
+			    	break;
+			    case "rabbit":
+			    	$("#encrypt_result").val(CryptoJS.Rabbit.encrypt($("#msg_source").val(),$("#pwd").val()));
+			    	break;
+			    case "rc4":
+			    	$("#encrypt_result").val(CryptoJS.RC4.encrypt($("#msg_source").val(),$("#pwd").val()));
+			    	break;
+			    case "tripledes":
+			    	$("#encrypt_result").val(CryptoJS.TripleDES.encrypt($("#msg_source").val(),$("#pwd").val()));
+			    	break;
+			}
+	    }
+		function decrypt(){
+		    switch($('input[name="encrypt_type"]:checked').val()){
+		    	case "aes":
+			    	$("#msg_source").val(CryptoJS.AES.decrypt($("#encrypt_result").val(),$("#pwd").val()).toString(CryptoJS.enc.Utf8));
+			    	break;
+		    	case "des":
+		    		$("#msg_source").val(CryptoJS.DES.decrypt($("#encrypt_result").val(),$("#pwd").val()).toString(CryptoJS.enc.Utf8));
+			    	break;
+			    case "rabbit":
+			    	$("#msg_source").val(CryptoJS.Rabbit.decrypt($("#encrypt_result").val(),$("#pwd").val()).toString(CryptoJS.enc.Utf8));
+			    	break;
+			    case "rc4":
+			    	$("#msg_source").val(CryptoJS.RC4.decrypt($("#encrypt_result").val(),$("#pwd").val()).toString(CryptoJS.enc.Utf8));
+			    	break;
+			    case "tripledes":
+			    	$("#msg_source").val(CryptoJS.TripleDES.decrypt($("#encrypt_result").val(),$("#pwd").val()).toString(CryptoJS.enc.Utf8));
+			    	break;
+			   }
+	    }
+	</script>
+</div>
+<script>
+$(document).ready(function (){
+$("#crypto").popover({placement:"bottom",title:"Crypto-JS",content:"Crypto-JS是一个使用JS实现的加密库，提供AES、DES、PBKDF2、SHA、MD5、RC4等多种算法。此工具使用这个库实现。"
+	});
+});
+</script>
+</div>
+	<!--     尾部footer开始    -->
+<div id="footer">
+	<p class="wrapper">
+		在线工具 由 <a href="http://www.oschina.net/" target="_blank">OSCHINA.NET</a> 所有 | <a href="http://weibo.com/oschina2010" target="_blank">@新浪微博</a> |<a href="http://www.aliyun.com/" target="_blank">阿里云</a>提供服务器和带宽 |<a data-toggle="modal" href="#advice">意见反馈</a> | <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备12009483号-6</a> | <span style="color:#AAA;">深圳市奥思网络科技有限公司版权所有</span>  	</p>
+</div>
+<!--     尾部footer结束    --><div class="modal hide fade" id="advice" style="display:none;">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>在线加密解密</h3>
+	</div>
+	<div class="modal-body">
+		<p>在此填写您的意见信息：</p>
+		<form class='well' id='advice_form'>
+			<input id="tool_name_f" type='hidden' name='tool_name' value='在线加密解密'/>
+			<div class="input-prepend">
+				<span class="add-on">Email邮箱:</span><input class="input-xlarge" type="text" id="advice_email" name="email" placeholder="在此输入您的Email" onblur="javascript:verifyEmail();" title="Email邮箱"/><span style="color:#A00" id="email_error"> (必填) </span>
+			</div>
+			
+			<label class="textarea">您的建议和意见：<br><textarea name="content" id="advice_content" style="width:480px;height:150px" placeholder="在此填写对  在线加密解密 的意见和建议"></textarea></label>
+			<label class="input">验证码：
+				<img style="margin-bottom:9px;" src="/action/jsbin/captcha" id="captcha_code" height="30px" width="80px" onclick="this.src = '/action/jsbin/captcha?'+new Date().getTime();"/>
+				<input type="text" id="captcha_input" onkeyup="document.getElementById('verifyCode').value=this.value;" style="height:20px;width:30px;"/>
+				<input id="verifyCode" name="verifyCode" type="hidden"/></label>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">取消</a>
+		<a href="#" class="btn btn-primary" id="advice_submit" disabled='disabled'>提交建议</a>
+	</div>
+</div>
+<script>
+			function verifyEmail(){
+		if(null == $("#advice_email").val().match(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)){
+			$("#email_error").html(" email输入错误 ");
+			$("#advice_email").focus();
+		}
+		else{
+			$("#email_error").html("<i class='icon-ok'></i>");
+			$("#advice_submit").removeAttr("disabled");
+		}
+	}
+	$(document).ready(function (){
+		$("#advice_submit").click(function (){
+			$.post("/action/advice/add_advice",
+					{ tool_name : $("#tool_name_f").val() , email: $("#advice_email").val(), content: $("#advice_content").val() ,verifyCode: $("#verifyCode").val()},
+					function (result){
+						var m=eval('(' + result + ')');
+						if("ok"==m.msg){
+							alert("谢谢您的建议，我们会参考您的建议使ostools变得更好！");
+							$('#advice').modal('hide');
+							$("#captcha_code").attr("src",'/action/jsbin/captcha?'+new Date().getTime());
+						}
+						else{
+							alert(m.msg);
+						}
+					});
+		});
+	});
+</script>
+		
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https'){
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else{
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "https://hm.baidu.com/hm.js?a411c4d1664dd70048ee98afe7b28f0b";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+
+<script>
+	window.goatcounter = {
+		path: function(p) { return location.host + p }
+	}
+</script>
+<script data-goatcounter="https://visit.oschina.net/count" async src="//visit.oschina.net/count.js"></script>
+
+</body>
+</html>
+<!-- Generated by OSCTools.NET (Sun May 19 17:54:26 CST 2024) 4ms -->
